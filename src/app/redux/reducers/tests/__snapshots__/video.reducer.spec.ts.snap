@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video Reducer should set loading state 1`] = `
+{
+  "error": null,
+  "favoriteList": [],
+  "isLoading": true,
+  "videoList": [],
+}
+`;
+
+exports[`videoReducer should set loading state 1`] = `
+{
+  "error": null,
+  "favoriteList": [],
+  "isLoading": true,
+  "videoList": [],
+}
+`;
+
+exports[`videoreducer should set loading state 1`] = `
+{
+  "error": null,
+  "favoriteList": [],
+  "isLoading": true,
+  "videoList": [],
+}
+`;

@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  background: #e5e5e5;
+}
+
+main {
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 20px 0;
+  margin-top: auto;
+  background: #e5e5e5;
+}

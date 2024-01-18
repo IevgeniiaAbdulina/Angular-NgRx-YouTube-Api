@@ -1,0 +1,51 @@
+<div class="login container">
+  <h3>Login</h3>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="email">Login</label>
+    <input formControlName="email" matInput placeholder="email@example.com" />
+
+    <div class="hint alert" *ngIf="validationChecks(getControlName('email')!)">
+      <p *ngIf="getControlName('email')?.errors?.['required']">
+        Please enter a login email
+      </p>
+      <p *ngIf="getControlName('email')?.errors?.['email']">
+        The login email is invalid
+      </p>
+    </div>
+
+    <label for="password">Password</label>
+    <input formControlName="password" matInput />
+
+    <div
+      class="hint alert"
+      *ngIf="validationChecks(getControlName('password')!)">
+      <p *ngIf="getControlName('password')?.errors?.['required']">
+        Please enter a password
+      </p>
+      <p *ngIf="getControlName('password')?.errors?.['minlength']">
+        A strong password should have at least 8 characters length.
+      </p>
+      <p *ngIf="getControlName('password')?.hasError('requireUppercase')">
+        * It should contain at least one uppercase letter.
+      </p>
+      <p *ngIf="getControlName('password')?.hasError('requireLowercase')">
+        * It should contain at least one lowercase letter.
+      </p>
+      <p *ngIf="getControlName('password')?.hasError('requireDigit')">
+        * It should contain at least one number.
+      </p>
+      <p *ngIf="getControlName('password')?.hasError('specialCharacter')">
+        * It should contain at least one special character (e.g., !, @, #, $).
+      </p>
+    </div>
+
+    <div class="action">
+      <app-button
+        [customClass]="'login-submit-btn'"
+        [isDisabledButton]="loginForm.invalid"
+        (click)="onSubmit()"
+        >Login</app-button
+      >
+    </div>
+  </form>
+</div>

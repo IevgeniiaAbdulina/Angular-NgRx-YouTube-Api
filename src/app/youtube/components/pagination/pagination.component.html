@@ -1,0 +1,19 @@
+<div class="pagination">
+  <app-button
+    id="previous-page"
+    aria-label="Previous Page"
+    [customClass]="'pagination-btn'"
+    (click)="previousPageHandler()"
+    [isDisabledButton]="pageIndex < 2">
+    <mat-icon> chevron_left </mat-icon>
+  </app-button>
+  <p>Page: {{ pageIndex }}</p>
+  <app-button
+    id="next-page"
+    aria-label="Next Page"
+    [customClass]="'pagination-btn'"
+    (click)="nextPageHandler()"
+    [isDisabledButton]="!pageIndex">
+    <mat-icon> chevron_right </mat-icon>
+  </app-button>
+</div>

@@ -1,0 +1,56 @@
+<div class="details-container">
+  <app-button (click)="backButtonHandler()">
+    <img src="assets/img/back-arrow.svg" alt="back arrow image" />
+  </app-button>
+  <div class="details-wrap">
+    <img
+      [src]="videoItem?.snippet?.thumbnails?.high?.url"
+      alt="preview image" />
+    <div class="content">
+      <div>
+        <div class="content-header">
+          <p>{{ videoItem?.snippet?.publishedAt | date: 'fullDate' }}</p>
+          <h3>{{ videoItem?.snippet?.title }}</h3>
+        </div>
+        <div class="content-actions">
+          <app-button
+            *ngIf="videoItem?.kind === 'custom#video'"
+            [customClass]="'delete-btn'"
+            (buttonClick)="deleteItemHandler(videoItem)">
+            <mat-icon class="delete-ic">delete</mat-icon>
+            Delete video
+          </app-button>
+
+          <container-element
+            *ngIf="videoItem?.kind === 'youtube#video'"
+            [ngSwitch]="getFavoriteStatus(videoItem?.id)">
+            <app-button
+              *ngSwitchCase="true"
+              [customClass]="'remove-favorite-lm-btn'"
+              (buttonClick)="removeFromFavoriteListHandler(videoItem)">
+              <img
+                class="dislike-ic"
+                src="assets/icons/dislike.svg"
+                alt="dislike icon" />
+              Remove video from favorites
+            </app-button>
+
+            <app-button
+              *ngSwitchDefault
+              [customClass]="'favorite-sm-btn'"
+              (buttonClick)="favoriteItemHandler(videoItem)">
+              <mat-icon class="favorite-ic" fontIcon="favorite"></mat-icon>
+            </app-button>
+          </container-element>
+        </div>
+        <div class="content-body">
+          <h4>Description:</h4>
+          <p>{{ videoItem?.snippet?.description }}</p>
+        </div>
+      </div>
+      <div class="content-statistics">
+        <app-item-statistics [videoItem]="videoItem"></app-item-statistics>
+      </div>
+    </div>
+  </div>
+</div>

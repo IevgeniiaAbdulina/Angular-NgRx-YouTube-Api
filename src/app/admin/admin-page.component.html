@@ -1,0 +1,64 @@
+<div class="create-video-card container">
+  <h3>Create new card</h3>
+
+  <form [formGroup]="cardCreationForm">
+    <ng-container
+      *ngFor="let field of formFields | objToArr"
+      [ngSwitch]="field.name">
+      <div class="item" *ngSwitchDefault>
+        <label [for]="field.name">{{ field.label | titlecase }}</label>
+        <input [type]="field.type" [formControlName]="field.formControlName" />
+        <div
+          class="hint alert"
+          *ngIf="validationChecks(getControlName(field.formControlName)!)">
+          <div *ngFor="let err of field.errorKeys">
+            <p *ngIf="getControlName(field.formControlName)?.errors?.[err]">
+              {{ field.mapedErrors?.get(err) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngSwitchCase="'tags'"
+        class="item tag"
+        [formArrayName]="field.formControlName">
+        <ng-container
+          *ngFor="
+            let tag of getFormArrayControl(field.formControlName).controls;
+            let i = index
+          ">
+          <div *ngIf="i < 5">
+            <label for="tag-{{ i }}">{{ field.label }}</label>
+            <input id="tag-{{ i }}" [type]="field.type" [formControlName]="i" />
+            <div
+              class="hint alert"
+              *ngIf="
+                validationChecks(getFormArrayControl(field.formControlName)!)
+              ">
+              <p *ngIf="tag.errors">{{ field.mapedErrors?.get('required') }}</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <app-button [customClass]="'add-tag-btn'" (click)="addTag()"
+          >Add tag</app-button
+        >
+      </div>
+    </ng-container>
+
+    <div class="action">
+      <app-button
+        [customClass]="'create-card-submit-btn'"
+        (click)="submitHandler()"
+        [isDisabledButton]="cardCreationForm.invalid"
+        >Create card</app-button
+      >
+      <app-button
+        [customClass]="'create-card-reset-btn'"
+        (click)="resetHandler()"
+        >Reset</app-button
+      >
+    </div>
+  </form>
+</div>

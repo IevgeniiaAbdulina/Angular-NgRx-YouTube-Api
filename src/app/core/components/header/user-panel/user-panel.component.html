@@ -1,0 +1,22 @@
+<div class="login-wrap">
+  <app-button
+    *ngIf="isAdminLoggedIn$ | async"
+    routerLink="/admin"
+    routerLinkActive="active">
+    <mat-icon class="to-admin-btn">library_add</mat-icon>
+  </app-button>
+  <ng-container *ngIf="(isUserLoggedIn$ | async) === false">
+    <app-button [customClass]="'auth-btn'" (click)="loginButtonHandler()"
+      >Sign In</app-button
+    >
+  </ng-container>
+  <div class="user-name" *ngIf="isUserLoggedIn$ | async">
+    <p>User Name</p>
+    <img class="login" src="assets/img/login.svg" alt="user icon" />
+    <app-button
+      [customClass]="'auth-btn sign-out'"
+      (click)="signOutButtonHandler()"
+      >Sign Out</app-button
+    >
+  </div>
+</div>

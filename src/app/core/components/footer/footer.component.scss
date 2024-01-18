@@ -1,0 +1,28 @@
+footer {
+  margin: 50px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 80vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav > p {
+  color: grey;
+}
+
+nav > p > a > img.gh-ic {
+  width: 22px;
+  height: 16px;
+  position: relative;
+  top: 2px;
+}
+
+nav > p > a > img.rss-ic {
+  width: 120px;
+  height: 28px;
+}

@@ -1,0 +1,169 @@
+.reusable-btn {
+  width: fit-content;
+  height: 100%;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background: #2f80ed;
+  box-shadow: 2px 0px 4px 0px #2f80ed;
+
+  &:hover {
+    filter: brightness(0.85);
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: #fff;
+    background-color: #b1b1b1;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.logo-btn {
+  background: none;
+  box-shadow: none;
+}
+
+.search-btn {
+  width: 80px;
+  height: 24px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.search-settings-btn {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.sorting-btn {
+  padding: 4px 8px;
+  color: #2f80ed;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    filter: brightness(0.65);
+  }
+}
+
+.user-info-btn {
+  width: 23px;
+  height: 24px;
+}
+
+.auth-btn {
+  width: 80px;
+  height: 24px;
+
+  &.sign-out {
+    color: #828282;
+    background: none;
+    box-shadow: none;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.clear-btn {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  color: gray;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:active {
+    color: black;
+  }
+}
+
+.video-card-btn {
+  width: 120px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+.login-submit-btn {
+  width: 124px;
+  height: 30px;
+}
+
+.add-tag-btn {
+  width: 124px;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.create-card-reset-btn,
+.create-card-submit-btn {
+  width: 124px;
+  height: 30px;
+}
+
+.create-card-reset-btn {
+  margin-right: 10px;
+  color: gray;
+  background-color: transparent;
+  border: 1px solid #828282;
+  box-shadow: none;
+}
+
+.pagination-btn {
+  padding: 4px 8px;
+  margin: 10px;
+}
+
+.favorite-btn,
+.delete-btn {
+  padding: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.delete-btn,
+.delete-sm-btn,
+.remove-favorite-sm-btn {
+  color: white;
+  background-color: #eb5757;
+  box-shadow: none;
+}
+
+.remove-favorite-lm-btn {
+  padding: 4px 14px 4px 4px;
+  color: gray;
+  background-color: transparent;
+  border: 1px solid #828282;
+  box-shadow: none;
+
+  &:hover {
+    color: white;
+    border: 1px solid #c94444;
+    background-color: #eb5757;
+    filter: brightness(1);
+  }
+}
+
+.favorite-sm-btn,
+.delete-sm-btn,
+.remove-favorite-sm-btn {
+  padding: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}

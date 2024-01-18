@@ -1,0 +1,40 @@
+<app-button
+  [customClass]="'search-settings-btn'"
+  (click)="panelVisibilityChange()">
+  <img
+    class="search-settings-ic"
+    src="assets/img/search_settings_vector.svg"
+    alt="settings icon" />
+</app-button>
+
+<div class="settings-panel" *ngIf="isSortPanelVisible">
+  <div class="settings-panel-wrapper">
+    <p>Sorting by:</p>
+    <div class="settings-panel-content">
+      <app-button
+        [customClass]="'sorting-btn'"
+        (click)="sortingByDateHandler()">
+        Date
+        <mat-icon [class]="isSortedByDate ? 'descending' : 'ascending'">
+          arrow_drop_up
+        </mat-icon>
+      </app-button>
+      <app-button
+        [customClass]="'sorting-btn'"
+        (click)="sortingByViewsHandler()">
+        Count of views
+        <mat-icon [class]="isSortedByViews ? 'descending' : 'ascending'">
+          arrow_drop_up
+        </mat-icon>
+      </app-button>
+      <form [formGroup]="sortingForm" (ngSubmit)="filteringByTextHandler()">
+        <app-button
+          [customClass]="'sorting-btn'"
+          (click)="filteringByTextHandler()">
+          By word or sentance
+        </app-button>
+        <input type="text" formControlName="sortingText" />
+      </form>
+    </div>
+  </div>
+</div>

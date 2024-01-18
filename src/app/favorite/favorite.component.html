@@ -1,0 +1,5 @@
+<div class="favorite-container">
+  <div *ngFor="let video of favoriteList$ | async">
+    <app-card [videoItem]="video" [isFavorite]="isFavorite"></app-card>
+  </div>
+</div>

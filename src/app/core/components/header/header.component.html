@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="search-panel-wrap">
+    <a
+      [routerLink]="['/video']"
+      routerLinkActive="active"
+      (click)="navigateHandler()">
+      <img class="logo" src="assets/img/logo.svg" alt="logo image" />
+    </a>
+    <app-search-panel></app-search-panel>
+    <app-settings></app-settings>
+    <app-button routerLink="/favorite" routerLinkActive="active">
+      <mat-icon class="to-fav-btn">favorite</mat-icon>
+    </app-button>
+  </div>
+
+  <app-user-panel></app-user-panel>
+</div>

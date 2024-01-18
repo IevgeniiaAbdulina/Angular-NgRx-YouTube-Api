@@ -1,0 +1,56 @@
+<div
+  class="video-card"
+  id="video-card-element"
+  [appCardBorderColor]="videoItem?.snippet?.publishedAt">
+  <div class="video-card-body">
+    <div class="img-wrap">
+      <img
+        *ngIf="videoItem?.snippet?.thumbnails?.high?.url"
+        [src]="videoItem?.snippet?.thumbnails?.high?.url"
+        alt="video preview image"
+        (error)="img.src = 'assets/img/default_image.svg'"
+        #img />
+    </div>
+
+    <div class="item-statistics">
+      <app-item-statistics [videoItem]="videoItem"></app-item-statistics>
+    </div>
+
+    <h3>{{ videoItem?.snippet?.title }}</h3>
+    <p>Date: {{ videoItem?.snippet?.publishedAt | date: 'shortDate' }}</p>
+  </div>
+
+  <div class="video-card-actions">
+    <app-button
+      *ngIf="videoItem?.kind === 'custom#video'"
+      [customClass]="'delete-sm-btn'"
+      (buttonClick)="deleteItemHandler(videoItem)">
+      <mat-icon class="delete-ic">delete</mat-icon>
+    </app-button>
+
+    <container-element
+      *ngIf="videoItem?.kind === 'youtube#video'"
+      [ngSwitch]="isFavorite">
+      <app-button
+        *ngSwitchCase="true"
+        [customClass]="'remove-favorite-sm-btn'"
+        (buttonClick)="removeFromFavoriteListHandler(videoItem)">
+        <img
+          class="dislike-ic"
+          src="assets/icons/dislike.svg"
+          alt="dislike icon" />
+      </app-button>
+
+      <app-button
+        *ngSwitchDefault
+        [customClass]="'favorite-sm-btn'"
+        (buttonClick)="favoriteItemHandler(videoItem)">
+        <mat-icon class="favorite-ic" fontIcon="favorite"></mat-icon>
+      </app-button>
+    </container-element>
+
+    <a class="btn-default" [routerLink]="[url, videoItem?.id]">
+      <app-button [customClass]="'video-card-btn'">More...</app-button></a
+    >
+  </div>
+</div>
